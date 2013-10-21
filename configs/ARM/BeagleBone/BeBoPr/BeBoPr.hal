@@ -56,8 +56,11 @@ addf bb_gpio.write                        servo-thread
 # Axis-of-motion Specific Configs (not the GUI)
 # ######################################################
 
-net L lineardeltakins.L => rostock.L
-net R lineardeltakins.R => rostock.R
+# XXX BDH: commenting out for now, to load faster w/o sim.
+#net L lineardeltakins.L => rostock.L
+#net R lineardeltakins.R => rostock.R
+net L lineardeltakins.L
+net R lineardeltakins.R
 
 sets L 269
 sets R 130.25
