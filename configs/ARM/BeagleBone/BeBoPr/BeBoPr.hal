@@ -15,7 +15,7 @@ loadusr -w ./setup.sh
 # ###################################
 
 # kinematics
-loadrt trivkins
+loadrt lineardeltakins
 
 # motion controller, get name and thread periods from ini file
 loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AXES
@@ -32,6 +32,9 @@ loadrt limit1 count=2
 # t = Thermistor table (only epcos_B57560G1104 or 1 supported for now)
 # a = analog input channel
 loadusr -Wn Therm ./ReadTemp.py -n Therm --num_chan 2 -t 1 1 -a 1 3
+
+# XXX BDH: commenting out for now.
+#loadusr -W rostock
 
 # ################################################
 # THREADS
@@ -53,6 +56,19 @@ addf bb_gpio.write                        servo-thread
 # Axis-of-motion Specific Configs (not the GUI)
 # ######################################################
 
+net L lineardeltakins.L => rostock.L
+net R lineardeltakins.R => rostock.R
+
+sets L 269
+sets R 130.25
+
+# XXX BDH: commenting these out for now.
+# create HAL signals for position commands from motion module
+# loop position commands back to motion module feedback
+#net J0pos axis.0.motor-pos-cmd => axis.0.motor-pos-fb rostock.joint0
+#net J1pos axis.1.motor-pos-cmd => axis.1.motor-pos-fb rostock.joint1
+#net J2pos axis.2.motor-pos-cmd => axis.2.motor-pos-fb rostock.joint2
+#net Apos axis.3.motor-pos-cmd => axis.3.motor-pos-fb
 
 # ################
 # X [0] Axis
