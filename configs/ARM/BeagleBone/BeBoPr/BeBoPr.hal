@@ -92,6 +92,10 @@ setp [PRUCONF](DRIVER).stepgen.00.steppin         0xA2
 # P8.44 PRU1.out4
 setp [PRUCONF](DRIVER).stepgen.00.dirpin          0xA3
 
+# Use XMax switch input as home switch.
+net home-x bb_gpio.p8.in-32 => axis.0.home-sw-in
+# Switch is NC (Normally Connected) and triggers low when pressed.
+setp bb_gpio.p8.in-32.invert 1
 
 # ################
 # Y [1] Axis
@@ -130,6 +134,11 @@ setp [PRUCONF](DRIVER).stepgen.01.maxaccel        [AXIS_1]STEPGEN_MAX_ACC
 setp [PRUCONF](DRIVER).stepgen.01.steppin         0xA5
 # P8.39 PRU1.out6
 setp [PRUCONF](DRIVER).stepgen.01.dirpin          0xA6
+
+# Use YMax switch input as home switch.
+net home-y bb_gpio.p8.in-33 => axis.1.home-sw-in
+# Switch is NC (Normally Connected) and triggers low when pressed.
+setp bb_gpio.p8.in-33.invert 1
 
 
 # ################
@@ -170,6 +179,10 @@ setp [PRUCONF](DRIVER).stepgen.02.steppin         0xA8
 # P8.29 PRU1.out9
 setp [PRUCONF](DRIVER).stepgen.02.dirpin          0xA9
 
+# Use ZMax switch input as home switch.
+net home-z bb_gpio.p8.in-37 => axis.2.home-sw-in
+# Switch is NC (Normally Connected) and triggers low when pressed.
+setp bb_gpio.p8.in-37.invert 1
 
 # ################
 # A [3] Axis (Extruder)
