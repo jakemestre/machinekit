@@ -62,8 +62,8 @@ addf bb_gpio.write                        servo-thread
 net L lineardeltakins.L
 net R lineardeltakins.R
 
-sets L 269
-sets R 130.25
+sets L 288.75
+sets R 140.8
 
 # XXX BDH: commenting these out for now.
 # create HAL signals for position commands from motion module
