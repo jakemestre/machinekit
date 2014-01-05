@@ -7,5 +7,4 @@ s/^M82/;M82/
 s/^M106/;M106/
 s/^M107/;M107/
 ' "$1" > "${1%gcode}ngc"
-echo "G0 Z150" >> "${1%gcode}ngc"
 echo M2 >> "${1%gcode}ngc"
